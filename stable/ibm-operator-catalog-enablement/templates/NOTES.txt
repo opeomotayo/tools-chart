@@ -1,0 +1,21 @@
+The following catalogs are available via RedHat OpenShift Container Platform console :
+
+- IBM Operator Catalog
+- IBMCS Operators 
+
+Note: Products installed via operators with these catalogs may require purchase and entitlement.
+
+Navigate via Administrator->Operators->OperatorHub and select Provider Type filter 
+to view operators available within these custom catalogs.  
+
+Steps to verify the IBM Catalogs are available : 
+1. oc -n openshift-marketplace get catalogsource ibm-operator-catalog -o jsonpath="{.status.connectionState.lastObservedState}"
+2. Verify the state returned is 'READY'
+3. oc -n openshift-marketplace get catalogsource opencloud-operators -o jsonpath="{.status.connectionState.lastObservedState}"
+4. Verify the state returned is 'READY'
+
+If deploying a `ImageContentSourcePolicy` by setting the 'mirrorConfig' to true,  the nodes will be either rebooting or drain the nodes to fully apply the change.
+Steps to verify the deployment is complete:
+1. oc get imagecontentsourcepolicy ibm-cpopen-mirror-config
+2. oc get nodes
+3. Verify all nodes are in 'Ready' status
