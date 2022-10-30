@@ -10,7 +10,7 @@ apiVersion: extensions/v1beta1
 {{ end -}}
 kind: Ingress
 metadata:
-  name: sonarqube-ingress #{{ template "sonarqube.fullname" . }}
+  name: sonarqube-ingress # {{ template "sonarqube.fullname" . }}
   labels:
     app: {{ template "sonarqube.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
