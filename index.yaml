@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   dotnet:
   - apiVersion: v2
-    created: "2022-10-30T23:10:49.059151809Z"
+    created: "2022-10-30T23:19:08.23339011Z"
     description: A Helm chart to build and deploy .NET applications
     digest: cd6f9d75d35e8a4f09695047aec97548a5404a1fb392ac9ad9f7e94194d1db34
     keywords:
@@ -15,7 +15,7 @@ entries:
   ibm-b2bi-prod:
   - apiVersion: v2
     appVersion: 6.1.0.0
-    created: "2022-10-30T23:10:49.089738209Z"
+    created: "2022-10-30T23:19:08.265393522Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -46,7 +46,7 @@ entries:
   ibm-cpq-prod:
   - apiVersion: v2
     appVersion: 10.0.0.22
-    created: "2022-10-30T23:10:49.190853939Z"
+    created: "2022-10-30T23:19:08.395893432Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -83,7 +83,7 @@ entries:
     version: 4.0.4
   - apiVersion: v2
     appVersion: 10.0.0.20
-    created: "2022-10-30T23:10:49.165402472Z"
+    created: "2022-10-30T23:19:08.357303653Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -120,7 +120,7 @@ entries:
     version: 4.0.3
   - apiVersion: v2
     appVersion: 10.0.0.15
-    created: "2022-10-30T23:10:49.148271176Z"
+    created: "2022-10-30T23:19:08.333617299Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -157,7 +157,7 @@ entries:
     version: 4.0.1
   - apiVersion: v2
     appVersion: 10.0.0.12
-    created: "2022-10-30T23:10:49.125082193Z"
+    created: "2022-10-30T23:19:08.305153703Z"
     description: IBM Sterling Configure, Price, Quote (CPQ) solution enables you to quickly configure, price, quote and order the right products and services. To sell competitively in today’s multichannel environment, organizations need a way to easily manage product and service configuration and pricing rules that allow prospects, customers, sales staff, call center representatives and Business Partners to quickly find, configure and order the right products and services. IBM® Sterling Configure, Price, Quote solution automates every step of the configure, price and quote process to help organizations easily create Web storefronts, offer dynamic catalog and pricing information,  and direct customers and partners to find, configure and order the right products and services. This enables you to transform how you sell complex products and services by removing the internal complexity of multi-tiered selling within your organization and with your partners.  Documentation Additional information about installation can be found at https://ibm.biz/BdqqUS.  License Sterling Configure Price Quote Software is licensed under https://ibm.biz/Bdqqgd which must be accepted during the install of the Product.
     digest: 6748925c898f1fbfde2175f8ee4ae383716dc9f3d5815eb21e167006b0614779
     icon: https://raw.githubusercontent.com/IBM/charts/master/logo/ibm-oms-logo.png
@@ -188,7 +188,7 @@ entries:
     version: 4.0.0
   - apiVersion: v2
     appVersion: 10.0.0.10
-    created: "2022-10-30T23:10:49.110207872Z"
+    created: "2022-10-30T23:19:08.285376233Z"
     description: IBM Sterling Configure, Price, Quote (CPQ) solution enables you to quickly configure, price, quote and order the right products and services. To sell competitively in today’s multichannel environment, organizations need a way to easily manage product and service configuration and pricing rules that allow prospects, customers, sales staff, call center representatives and Business Partners to quickly find, configure and order the right products and services. IBM® Sterling Configure, Price, Quote solution automates every step of the configure, price and quote process to help organizations easily create Web storefronts, offer dynamic catalog and pricing information,  and direct customers and partners to find, configure and order the right products and services. This enables you to transform how you sell complex products and services by removing the internal complexity of multi-tiered selling within your organization and with your partners.  Documentation Additional information about installation can be found at https://ibm.biz/BdqqUS.  License Sterling Configure Price Quote Software is licensed under https://ibm.biz/Bdqqgd which must be accepted during the install of the Product.
     digest: d367df8e64ed130753d0d417ccbf700b65a6ddf00d316bf24ff5f9668d5f2a0e
     icon: https://raw.githubusercontent.com/IBM/charts/master/logo/ibm-oms-logo.png
@@ -220,7 +220,7 @@ entries:
   ibm-mongodb-enterprise-helm:
   - apiVersion: v2
     appVersion: 4.4.0
-    created: "2022-10-30T23:10:49.194534318Z"
+    created: "2022-10-30T23:19:08.39885199Z"
     description: 'IBM Helm Chart to deploy MongoDB Enterprise on OpenShift Container Platform hosted on IBM Power systems.  Documentation For additional details regarding install parameters see here https://docs.mongodb.com/manual/administration/install-enterprise/  License By installing this product you accept the license terms. https://www.mongodb.com/community/licensing '
     digest: 408765c885afd24be2a631ceb49b471d761b33e9f9e3a9ca3f7367644dd68815
     keywords:
@@ -239,7 +239,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 4.4.0
-    created: "2022-10-30T23:10:49.192716425Z"
+    created: "2022-10-30T23:19:08.397214134Z"
     description: 'IBM Helm Chart to deploy MongoDB Enterprise on OpenShift Container Platform hosted on IBM Power systems.  Documentation For additional details regarding install parameters see here https://docs.mongodb.com/manual/administration/install-enterprise/  License By installing this product you accept the license terms. https://www.mongodb.com/community/licensing '
     digest: 6727fe960ea49f9fa1e6c5c36f1d4190b1ca12ce82b11c290b6150f34a48560b
     keywords:
@@ -259,7 +259,7 @@ entries:
   ibm-object-storage-plugin:
   - apiVersion: v2
     appVersion: 2.0.7
-    created: "2022-10-30T23:10:49.198521Z"
+    created: "2022-10-30T23:19:08.404059087Z"
     description: 'Chart for deploying ibmcloud object storage plugin. IBM Cloud Object Storage is persistent, highly available storage that you can mount to apps that run in a Kubernetes cluster by using the IBM Cloud Object Storage plug-in. The plug-in is a Kubernetes Flex-Volume plug-in that connects Cloud Object Storage buckets to pods in your cluster.  Documentation For additional details regarding install parameters see here ibm.biz/BdqPR6  License By installing this product you accept the license terms. https://www.apache.org/licenses/LICENSE-2.0 '
     digest: 71d57e8660abb5cb9ab3f97d49c5f5f0807dcf315e1b1beffc0cc047a85556ff
     icon: https://cache.globalcatalog.cloud.ibm.com/static/cache/2461-acb0d10a1725d783/images/uploaded/icons/object-storage.png
@@ -280,7 +280,7 @@ entries:
     version: 2.0.7
   - apiVersion: v2
     appVersion: 2.0.4
-    created: "2022-10-30T23:10:49.197197443Z"
+    created: "2022-10-30T23:19:08.402426319Z"
     description: 'Chart for deploying ibmcloud object storage plugin. IBM Cloud Object Storage is persistent, highly available storage that you can mount to apps that run in a Kubernetes cluster by using the IBM Cloud Object Storage plug-in. The plug-in is a Kubernetes Flex-Volume plug-in that connects Cloud Object Storage buckets to pods in your cluster.  Documentation For additional details regarding install parameters see here ibm.biz/BdqPR6  License By installing this product you accept the license terms. https://www.apache.org/licenses/LICENSE-2.0 '
     digest: 068ba5a6258fd7313310168003933a77632a5cddc6c5967c51749b4627192e97
     icon: https://cache.globalcatalog.cloud.ibm.com/static/cache/2461-acb0d10a1725d783/images/uploaded/icons/object-storage.png
@@ -301,7 +301,7 @@ entries:
     version: 2.0.4
   - apiVersion: v2
     appVersion: 2.0.0
-    created: "2022-10-30T23:10:49.1958068Z"
+    created: "2022-10-30T23:19:08.40071156Z"
     description: 'Chart for deploying ibmcloud object storage plugin. IBM Cloud Object Storage is persistent, highly available storage that you can mount to apps that run in a Kubernetes cluster by using the IBM Cloud Object Storage plug-in. The plug-in is a Kubernetes Flex-Volume plug-in that connects Cloud Object Storage buckets to pods in your cluster.  Documentation For additional details regarding install parameters see here ibm.biz/BdqPR6  License By installing this product you accept the license terms. https://www.apache.org/licenses/LICENSE-2.0 '
     digest: 469e5e4093386c9b2a2f50cf55197db1c2489832bd3bc72018a17f0df9553474
     icon: https://cache.globalcatalog.cloud.ibm.com/static/cache/2461-acb0d10a1725d783/images/uploaded/icons/object-storage.png
@@ -323,7 +323,7 @@ entries:
   ibm-oms-ent-prod:
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.250342817Z"
+    created: "2022-10-30T23:19:08.459722062Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -356,7 +356,7 @@ entries:
     version: 6.0.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.238019531Z"
+    created: "2022-10-30T23:19:08.446035024Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -389,7 +389,7 @@ entries:
     version: 5.1.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.225782737Z"
+    created: "2022-10-30T23:19:08.428750892Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -422,7 +422,7 @@ entries:
     version: 5.1.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.210127294Z"
+    created: "2022-10-30T23:19:08.416227742Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -455,7 +455,7 @@ entries:
   ibm-oms-pro-prod:
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.309586935Z"
+    created: "2022-10-30T23:19:08.535107053Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -488,7 +488,7 @@ entries:
     version: 6.0.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.294841956Z"
+    created: "2022-10-30T23:19:08.51509821Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -521,7 +521,7 @@ entries:
     version: 5.1.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.278767429Z"
+    created: "2022-10-30T23:19:08.500806511Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -554,7 +554,7 @@ entries:
     version: 5.1.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-10-30T23:10:49.260785693Z"
+    created: "2022-10-30T23:19:08.484857399Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -587,7 +587,7 @@ entries:
   ibm-operator-catalog-enablement:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2022-10-30T23:10:49.312576842Z"
+    created: "2022-10-30T23:19:08.537762513Z"
     description: 'IBM Operator Catalog enablement deploys custom CatalogSources and ImageContentSourcePolicy  resources to enable consistent Catalog experience to deploy and maintain IBM products.  The operators are publically available, but products they install may require purchase and entitlement keys.   Documentation For additional details regarding installation see https://ibm.biz/operator-catalog-readme  License By installing this catalog you accept the license terms https://www.apache.org/licenses/LICENSE-2.0 '
     digest: 28cfa7807ee75582071276b741ed3d0d56dfc3aa757c2b42fd1e8925da11a2cb
     home: http://ibm.biz/oprcatalog
@@ -611,7 +611,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-10-30T23:10:49.311281477Z"
+    created: "2022-10-30T23:19:08.53644708Z"
     description: 'IBM Operator Catalog enablement deploys custom CatalogSources for operators available to deploy and maintain IBM products.  The operators are publically available, but products they install may require purchase and entitlement keys.  Documentation For additional details regarding installation see https://ibm.biz/operator-catalog-readme  License By installing this catalog you accept the license terms https://www.apache.org/licenses/LICENSE-2.0 '
     digest: 5a765d2f3f36f1b35c403a546df3590e3d6014cbf86bd36775f8febb54baa58c
     home: http://ibm.biz/oprcatalog
@@ -635,7 +635,7 @@ entries:
   ibm-seas:
   - apiVersion: v2
     appVersion: 6.0.3.0.01plus
-    created: "2022-10-30T23:10:49.334191027Z"
+    created: "2022-10-30T23:19:08.562937753Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -663,7 +663,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: 6.0.3.0.01
-    created: "2022-10-30T23:10:49.330039668Z"
+    created: "2022-10-30T23:19:08.557394077Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -691,7 +691,7 @@ entries:
     version: 1.2.1
   - apiVersion: v2
     appVersion: 6.0.3.0
-    created: "2022-10-30T23:10:49.325514116Z"
+    created: "2022-10-30T23:19:08.55281643Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -719,7 +719,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 6.0.2.0.03
-    created: "2022-10-30T23:10:49.318507983Z"
+    created: "2022-10-30T23:19:08.544974211Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -748,7 +748,7 @@ entries:
   ibm-sfg-prod:
   - apiVersion: v2
     appVersion: 6.1.0.0
-    created: "2022-10-30T23:10:49.364447179Z"
+    created: "2022-10-30T23:19:08.589846651Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -779,7 +779,7 @@ entries:
   ibm-ssp-cm:
   - apiVersion: v2
     appVersion: 6.0.3.0.01plus
-    created: "2022-10-30T23:10:49.385255866Z"
+    created: "2022-10-30T23:19:08.615038482Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -807,7 +807,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: 6.0.3.0.01
-    created: "2022-10-30T23:10:49.377412667Z"
+    created: "2022-10-30T23:19:08.60974275Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -835,7 +835,7 @@ entries:
     version: 1.2.1
   - apiVersion: v2
     appVersion: 6.0.3.0
-    created: "2022-10-30T23:10:49.373446824Z"
+    created: "2022-10-30T23:19:08.603934979Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -863,7 +863,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 6.0.2.0.03
-    created: "2022-10-30T23:10:49.369431168Z"
+    created: "2022-10-30T23:19:08.59627427Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -892,7 +892,7 @@ entries:
   ibm-ssp-engine:
   - apiVersion: v2
     appVersion: 6.0.3.0.01plus
-    created: "2022-10-30T23:10:49.412877247Z"
+    created: "2022-10-30T23:19:08.639466535Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -920,7 +920,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: 6.0.3.0.01
-    created: "2022-10-30T23:10:49.406426383Z"
+    created: "2022-10-30T23:19:08.630289749Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -948,7 +948,7 @@ entries:
     version: 1.2.1
   - apiVersion: v2
     appVersion: 6.0.3.0
-    created: "2022-10-30T23:10:49.402203459Z"
+    created: "2022-10-30T23:19:08.624382502Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -976,7 +976,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 6.0.2.0.03
-    created: "2022-10-30T23:10:49.396172079Z"
+    created: "2022-10-30T23:19:08.619813691Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -1005,7 +1005,7 @@ entries:
   ibm-ssp-ps:
   - apiVersion: v2
     appVersion: 6.0.3.0.01plus
-    created: "2022-10-30T23:10:49.430475676Z"
+    created: "2022-10-30T23:19:08.663891191Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -1033,7 +1033,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: 6.0.3.0.01
-    created: "2022-10-30T23:10:49.426499093Z"
+    created: "2022-10-30T23:19:08.656632715Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -1061,7 +1061,7 @@ entries:
     version: 1.2.1
   - apiVersion: v2
     appVersion: 6.0.3.0
-    created: "2022-10-30T23:10:49.422315723Z"
+    created: "2022-10-30T23:19:08.648469727Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -1089,7 +1089,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 6.0.2.0.03
-    created: "2022-10-30T23:10:49.416784069Z"
+    created: "2022-10-30T23:19:08.64372218Z"
     dependencies:
     - alias: sch
       name: ibm-sch
@@ -1118,7 +1118,7 @@ entries:
   nexus-chart:
   - apiVersion: v2
     appVersion: 3.42.0
-    created: "2022-10-30T23:10:49.431488873Z"
+    created: "2022-10-30T23:19:08.665246118Z"
     description: Sonatype Nexus Repository Manager - Universal Binary repository
     digest: 02d612aeb05b5a79c7c90713da410bc78e4791e31ded66e89e4cc04b94470896
     home: https://www.sonatype.com/nexus-repository-oss
@@ -1146,7 +1146,7 @@ entries:
     version: 42.0.2
   nodejs:
   - apiVersion: v2
-    created: "2022-10-30T23:10:49.432088075Z"
+    created: "2022-10-30T23:19:08.666028151Z"
     description: A Helm chart to build and deploy Node.js applications
     digest: eeb75da3ec2e4d63fcc69aaa51d5d5a6fe0573414ac8d7341f73faed7c439ac4
     keywords:
@@ -1159,7 +1159,7 @@ entries:
   nodejs-ex-k:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-10-30T23:10:49.433105338Z"
+    created: "2022-10-30T23:19:08.667626102Z"
     description: A Helm chart for Kubernetes
     digest: 4340070f6b0d04ebb2ea4a10046b89c9f1706c62ae67bdc247ff6a59b9d035ec
     name: nodejs-ex-k
@@ -1169,7 +1169,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-10-30T23:10:49.432735025Z"
+    created: "2022-10-30T23:19:08.667074389Z"
     description: A Helm chart for Kubernetes
     digest: 9f8eca455f8379baddd6ab61bd5517373514bb99bedbbddffb98ad88ac9841cc
     name: nodejs-ex-k
@@ -1179,7 +1179,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-10-30T23:10:49.432410117Z"
+    created: "2022-10-30T23:19:08.666522296Z"
     description: A Helm chart for Kubernetes
     digest: 64b36fee719567e2aae8cb6186ba02a56dc62a90df71af7f90cc1d9d2cd1fb25
     name: nodejs-ex-k
@@ -1189,7 +1189,7 @@ entries:
     version: 0.1.1
   quarkus:
   - apiVersion: v2
-    created: "2022-10-30T23:10:49.435027726Z"
+    created: "2022-10-30T23:19:08.670419571Z"
     description: A Helm chart to build and deploy Quarkus applications
     digest: 6d8f1b945c037f1f252e532430c21ef723bc11fab369ef26d316fff69c4ffade
     keywords:
@@ -1200,7 +1200,7 @@ entries:
     - charts/quarkus-0.0.3.tgz
     version: 0.0.3
   - apiVersion: v2
-    created: "2022-10-30T23:10:49.434387639Z"
+    created: "2022-10-30T23:19:08.669246936Z"
     description: A Helm chart to build and deploy Quarkus applications
     digest: 28a4c48bb9882edf04e916a643ff5936d72e60cc033e2e359b730b01b605ffac
     keywords:
@@ -1211,7 +1211,7 @@ entries:
     - charts/quarkus-0.0.2.tgz
     version: 0.0.2
   - apiVersion: v2
-    created: "2022-10-30T23:10:49.433705651Z"
+    created: "2022-10-30T23:19:08.668412955Z"
     description: A Helm chart to build and deploy Quarkus applications
     digest: dfa7f44698fc820e84f349929cd81c2ddbafb8d42e723df770e6ae7e72657b82
     keywords:
@@ -1221,10 +1221,79 @@ entries:
     urls:
     - charts/quarkus-0.0.1.tgz
     version: 0.0.1
+  sonarqube-chart:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Updated SonarQube to 9.7.0"
+        - kind: fixed
+          description: "Fix the right-dash curly brace issue with the additional network policy parameter"
+        - kind: added
+          description: "Allow `tests.image` to be configured and update README accordingly"
+        - kind: added
+          description: "Allow `tests.initContainers.image` to be configured and update README accordingly"
+        - kind: changed
+          description: "Use the networkPolicy.prometheusNamespace value for the network policy namespace selector"
+        - kind: changed
+          description: "Uncomment default value in values.yaml for backwards compatibility"
+        - kind: added
+          description: "Add support for monitoringPasscode passed as a secret and removal of livenessprobe httpheader defined in clear text"
+        - kind: changed
+          description: "Bump apiVersion to v2"
+        - kind: changed
+          description: "Set the number of allowed replicas to 0 and 1"
+        - kind: added
+          description: "Add documentation for ingress tls"
+        - kind: added
+          description: "Add documentation for sonarProperties and sonarSecretProperties"
+        - kind: added
+          description: "Add the possibility of using a secret for customizing the admin password"
+      artifacthub.io/containsSecurityUpdates: "false"
+      artifacthub.io/images: |
+        - name: sonarqube
+          image: sonarqube:9.7.0-community
+      artifacthub.io/links: |
+        - name: support
+          url: https://community.sonarsource.com/
+        - name: Chart Source
+          url: https://github.com/SonarSource/helm-chart-sonarqube/tree/master/charts/sonarqube
+    apiVersion: v2
+    appVersion: 9.7.0
+    created: "2022-10-30T23:19:08.685743804Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.15.0
+    - condition: nginx.enabled
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: 4.0.13
+    description: SonarQube offers Code Quality and Code Security analysis for up to 27 languages. Find Bugs, Vulnerabilities, Security Hotspots and Code Smells throughout your workflow.
+    digest: a6ce60a4fc0bad9d154871e3f254d4488e82d84b841f19d1516da51a63300608
+    home: https://www.sonarqube.org/
+    icon: https://www.sonarqube.org/assets/logo-31ad3115b1b4b120f3d1efd63e6b13ac9f1f89437f0cf6881cc4d8b5603a52b4.svg
+    keywords:
+    - coverage
+    - security
+    - code
+    - quality
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: leo.geoffroy+helm@sonarsource.com
+      name: leo-geoffroy-sonarsource
+    name: sonarqube-chart
+    sources:
+    - https://github.com/SonarSource/docker-sonarqube
+    - https://github.com/SonarSource/sonarqube
+    type: application
+    urls:
+    - charts/sonarqube-chart-6.0.1.tgz
+    version: 6.0.1
   wildfly:
   - apiVersion: v2
     appVersion: "24.0"
-    created: "2022-10-30T23:10:49.436737417Z"
+    created: "2022-10-30T23:19:08.688144707Z"
     dependencies:
     - name: wildfly-common
       repository: file://../wildfly-common
@@ -1243,7 +1312,7 @@ entries:
     version: 1.4.0
   - apiVersion: v2
     appVersion: "23.0"
-    created: "2022-10-30T23:10:49.435900439Z"
+    created: "2022-10-30T23:19:08.687037566Z"
     dependencies:
     - name: wildfly-common
       repository: file://../wildfly-common
@@ -1260,4 +1329,4 @@ entries:
     urls:
     - charts/wildfly-1.3.0.tgz
     version: 1.3.0
-generated: "2022-10-30T23:10:49.057142839Z"
+generated: "2022-10-30T23:19:08.230331936Z"
