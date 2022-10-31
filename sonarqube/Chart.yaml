@@ -63,4 +63,4 @@ sources:
 - https://github.com/SonarSource/docker-sonarqube
 - https://github.com/SonarSource/sonarqube
 type: application
-version: 0.0.4
+version: 0.0.5
