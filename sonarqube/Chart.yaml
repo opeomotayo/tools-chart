@@ -58,9 +58,9 @@ kubeVersion: '>= 1.19.0-0'
 maintainers:
 - email: leo.geoffroy+helm@sonarsource.com
   name: leo-geoffroy-sonarsource
-name: sonarqube
+name: sonarqube-chart
 sources:
 - https://github.com/SonarSource/docker-sonarqube
 - https://github.com/SonarSource/sonarqube
 type: application
-version: 6.0.0+403
+version: 0.0.1
