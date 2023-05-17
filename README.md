@@ -24,12 +24,13 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 
 ## [How To Submit a New Chart](https://github.com/redhat-developer/redhat-helm-charts/wiki/Adding-a-New-Chart)
 
-https://us05web.zoom.us/j/81635972158?pwd=OUtlbStkTS9PMlpPNlBYSWMrWUpidz09
 Join Zoom Meeting
-https://us05web.zoom.us/j/81635972158?pwd=OUtlbStkTS9PMlpPNlBYSWMrWUpidz09
+https://us05web.zoom.us/j/81912197004?pwd=MW1zZ3NqU1pRV1BqekdqVnZaem1lUT09
 
-Meeting ID: 816 3597 2158
-Passcode: evrk8n
+Meeting ID: 819 1219 7004
+Passcode: 5pEv1J
+
+
 
 
 
