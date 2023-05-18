@@ -1,201 +1,109 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+# Any arguments with default values need to be defined here to be usable in both stages.
+ARG PROXY_HOST=ep.threatpulse.net
+ARG PROXY_PORT=80
+ARG NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/wss.crt
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+# These are automatically usable in all stages:
+ARG http_proxy=http://${PROXY_HOST}:${PROXY_PORT}
+ARG https_proxy=http://${PROXY_HOST}:${PROXY_PORT}
+ARG no_proxy=172.0.0.0/8,.googleapis.com,.cloudendpointsapis.com,.oncp.dev,.cluster.local,.svc
 
-   1. Definitions.
+# Custom args shared between both stagess:
+ARG PROXY_ARGS="--proxy_host=${PROXY_HOST} --proxy_port=${PROXY_PORT} --proxy=http"
+ARG SDK_VERSION=30
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+FROM harbor.mgmt-bld.oncp.dev/base_images/alpine:3.12.0 AS plugin-builder
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+RUN wget -O /opt/nexus3-github-oauth-plugin.kar https://github.com/larscheid-schmitzhermes/nexus3-github-oauth-plugin/releases/download/3.0.0/nexus3-github-oauth-plugin.kar
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+FROM adoptopenjdk/openjdk8:alpine AS java-cacerts
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+LABEL name="Nexus Repository Manager" \
+      maintainer="Sonatype <support@sonatype.com>" \
+      vendor=Sonatype \
+      version="3.53.0-01" \
+      release="3.53.0" \
+      url="https://sonatype.com" \
+      summary="The Nexus Repository Manager server \
+          with universal support for popular component formats." \
+      description="The Nexus Repository Manager server \
+          with universal support for popular component formats." \
+      run="docker run -d --name NAME \
+          -p 8081:8081 \
+          IMAGE" \
+      stop="docker stop NAME" \
+      com.sonatype.license="Apache License, Version 2.0" \
+      com.sonatype.name="Nexus Repository Manager base image" \
+      io.k8s.description="The Nexus Repository Manager server \
+          with universal support for popular component formats." \
+      io.k8s.display-name="Nexus Repository Manager" \
+      io.openshift.expose-services="8081:8081" \
+      io.openshift.tags="Sonatype,Nexus,Repository Manager"
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+ARG NEXUS_VERSION=3.53.0-01
+ARG NEXUS_DOWNLOAD_URL=https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz
+ARG NEXUS_DOWNLOAD_SHA256_HASH=a91f32f3a3f95611006978888f621164c0a02dda5dce6b099781b8819ab59075
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+# configure nexus runtime
+ENV SONATYPE_DIR=/opt/sonatype
+ENV NEXUS_HOME=${SONATYPE_DIR}/nexus \
+    NEXUS_DATA=/nexus-data \
+    NEXUS_CONTEXT='' \
+    SONATYPE_WORK=${SONATYPE_DIR}/sonatype-work \
+    DOCKER_TYPE='rh-docker'
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+# Install Java & tar
+RUN microdnf update -y \
+    && microdnf --setopt=install_weak_deps=0 --setopt=tsflags=nodocs install -y \
+          java-1.8.0-openjdk-headless tar procps shadow-utils gzip \
+    && microdnf clean all \
+    && groupadd --gid 200 -r nexus \
+    && useradd --uid 200 -r nexus -g nexus -s /bin/false -d /opt/sonatype/nexus -c 'Nexus Repository Manager user'
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+WORKDIR ${SONATYPE_DIR}
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+# Download nexus & setup directories
+RUN curl -L ${NEXUS_DOWNLOAD_URL} --output nexus-${NEXUS_VERSION}-unix.tar.gz \
+    && echo "${NEXUS_DOWNLOAD_SHA256_HASH} nexus-${NEXUS_VERSION}-unix.tar.gz" > nexus-${NEXUS_VERSION}-unix.tar.gz.sha256 \
+    && sha256sum -c nexus-${NEXUS_VERSION}-unix.tar.gz.sha256 \
+    && tar -xvf nexus-${NEXUS_VERSION}-unix.tar.gz \
+    && rm -f nexus-${NEXUS_VERSION}-unix.tar.gz nexus-${NEXUS_VERSION}-unix.tar.gz.sha256 \
+    && mv nexus-${NEXUS_VERSION} $NEXUS_HOME \
+    && chown -R nexus:nexus ${SONATYPE_WORK} \
+    && mv ${SONATYPE_WORK}/nexus3 ${NEXUS_DATA} \
+    && ln -s ${NEXUS_DATA} ${SONATYPE_WORK}/nexus3
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+# Removing java memory settings from nexus.vmoptions since now we use INSTALL4J_ADD_VM_PARAMS
+RUN sed -i '/^-Xms/d;/^-Xmx/d;/^-XX:MaxDirectMemorySize/d' $NEXUS_HOME/bin/nexus.vmoptions
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+RUN echo "#!/bin/bash" >> ${SONATYPE_DIR}/start-nexus-repository-manager.sh \
+   && echo "cd /opt/sonatype/nexus" >> ${SONATYPE_DIR}/start-nexus-repository-manager.sh \
+   && echo "exec ./bin/nexus run" >> ${SONATYPE_DIR}/start-nexus-repository-manager.sh \
+   && chmod a+x ${SONATYPE_DIR}/start-nexus-repository-manager.sh \
+   && sed -e '/^nexus-context/ s:$:${NEXUS_CONTEXT}:' -i ${NEXUS_HOME}/etc/nexus-default.properties
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+RUN microdnf remove -y gzip shadow-utils
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+VOLUME ${NEXUS_DATA}
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+# Copy plugin into nexus image
+ARG DEPLOY_DIR=/opt/sonatype/nexus/deploy/
+USER root
+COPY --from=plugin-builder /opt/nexus3-github-oauth-plugin.kar ${DEPLOY_DIR}
+RUN echo "github.api.url=https://api.github.com" >> /opt/sonatype/nexus/etc/githuboauth.properties &&\
+    echo "github.principal.cache.ttl=PT1H" >> /opt/sonatype/nexus/etc/githuboauth.properties
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+ADD wss.crt /usr/local/share/ca-certificates/
+COPY --from=java-cacerts /opt/java/openjdk/jre/lib/security/cacerts ${NEXUS_DATA}/custom-truststore.jks
+# COPY /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.372.b07-1.el8_7.x86_64/lib/security/cacerts /${NEXUS_DATA}/custom-truststore.jks
+# #Import wssca certificate to Java keystore cacerts
+RUN echo yes | keytool -importcert -alias wssca -trustcacerts -storepass changeit -file /usr/local/share/ca-certificates/wss.crt -keystore /${NEXUS_DATA}/custom-truststore.jks
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
+EXPOSE 8081
+USER nexus
 
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
+ENV INSTALL4J_ADD_VM_PARAMS="-Xms2703m -Xmx2703m -XX:MaxDirectMemorySize=2703m -Djava.util.prefs.userRoot=${NEXUS_DATA}/javaprefs -Djavax.net.ssl.trustStore=/${NEXUS_DATA}/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
 
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
-
-   END OF TERMS AND CONDITIONS
-
-   APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-   Copyright [yyyy] [name of copyright owner]
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+CMD ["/opt/sonatype/nexus/bin/nexus", "run"]
