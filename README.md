@@ -27,5 +27,5 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 Join Zoom meeting
 
 
-https://upwork-dash.zoom.us/j/99031425719?pwd=bGlzekRFM1pIcmxnRnVMNGpkTWtDUT09
+https://us04web.zoom.us/j/77400788861?pwd=ojlbH8GTYbY6u6cGkCjuQ7JfyUtOGI.1
 
