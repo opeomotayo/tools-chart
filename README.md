@@ -26,6 +26,7 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 
 Join Zoom meeting
 
+https://us04web.zoom.us/j/77410905498?pwd=j0eaaBazPlDw0TroKc4rscW7NI8A9l.1
 
  https://meet.google.com/tdr-fypr-kch
 
