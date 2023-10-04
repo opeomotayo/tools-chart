@@ -24,9 +24,6 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 
 ## [How To Submit a New Chart](https://github.com/redhat-developer/redhat-helm-charts/wiki/Adding-a-New-Chart)
 
-Join Zoom meeting
+=IFERROR(REPT("*",FIND("^^",SUBSTITUTE(A1,".","^^",3))-1) & MID(A1,FIND("^^",SUBSTITUTE(A1,".","^^",3)),LEN(A1)), A1)
 
-https://us04web.zoom.us/j/78119787568?pwd=yM9FUx0wlasJrCGPlf5gfkMhSWVzmC.1
-
- https://meet.google.com/tdr-fypr-kch
 
