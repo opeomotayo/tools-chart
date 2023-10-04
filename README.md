@@ -26,6 +26,6 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 
 
 
-=SUBSTITUTE(A1, LEFT(A1, FIND("@", SUBSTITUTE(A1, ".", "@", 3)) - 1), REPT("*", LEN(LEFT(A1, FIND("@", SUBSTITUTE(A1, ".", "@", 3)) - 1))))
+=SUBSTITUTE(A1, LEFT(A1, FIND("~", SUBSTITUTE(A1, ".", "~", LEN(A1)-LEN(SUBSTITUTE(A1, ".", "")) - 1))-1), REPT("*", LEN(LEFT(A1, FIND("~", SUBSTITUTE(A1, ".", "~", LEN(A1)-LEN(SUBSTITUTE(A1, ".", "")) - 1))-1))))
 
 
