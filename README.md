@@ -24,6 +24,8 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 
 ## [How To Submit a New Chart](https://github.com/redhat-developer/redhat-helm-charts/wiki/Adding-a-New-Chart)
 
-=IFERROR(REPT("*",FIND("^^",SUBSTITUTE(A1,".","^^",3))-1) & MID(A1,FIND("^^",SUBSTITUTE(A1,".","^^",3)),LEN(A1)), A1)
+
+
+=SUBSTITUTE(A1, LEFT(A1, FIND("@", SUBSTITUTE(A1, ".", "@", 3)) - 1), REPT("*", LEN(LEFT(A1, FIND("@", SUBSTITUTE(A1, ".", "@", 3)) - 1))))
 
 
