@@ -26,6 +26,4 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 
 
 
-=SUBSTITUTE(A1, LEFT(A1, FIND("~", SUBSTITUTE(A1, ".", "~", LEN(A1)-LEN(SUBSTITUTE(A1, ".", "")) - 1))-1), REPT("*", LEN(LEFT(A1, FIND("~", SUBSTITUTE(A1, ".", "~", LEN(A1)-LEN(SUBSTITUTE(A1, ".", "")) - 1))-1))))
-
-
+https://us05web.zoom.us/j/88159984398?pwd=5G9MBrNRup7cHLrjkWTStK012kbHEu.1
