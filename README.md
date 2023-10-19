@@ -25,4 +25,4 @@ https://redhat-developer.github.io/redhat-helm-charts/index.yaml
 ## [How To Submit a New Chart](https://github.com/redhat-developer/redhat-helm-charts/wiki/Adding-a-New-Chart)
 
 
-https://us05web.zoom.us/j/83415109605?pwd=y1rPN9pN9olcIsOz0wIYDUmmfejnlI.1
+https://us05web.zoom.us/j/81245182258?pwd=zta1nfkmjb3bKUMgOwbx4SwQbj1b3L.1
