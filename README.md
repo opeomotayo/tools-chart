@@ -68,3 +68,16 @@ Scalability:
 Cost:
 
     The cost of both tools may vary based on the features and usage. Nexus IQ is known to be on the higher end in terms of pricing due to its feature set.
+
+    stage('input') {
+                    steps {
+                        script {
+                            node( 'master') {
+                                def inputFile = input message: 'Upload Artifact', parameters: [file(name: 'upload_file')]
+                                def uploadFile = inputFile.remote
+                                sh "cp ${uploadFile} ${LOCAL_PATH}"
+                                stash name: 'upload-artifact', includes: "${LOCAL_PATH}"
+                            }    
+                        }
+                    }
+                }
