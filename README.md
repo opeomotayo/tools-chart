@@ -81,3 +81,6 @@ Cost:
                         }
                     }
                 }
+
+
+latest_runner_version=$(curl -sL https://github.com/vbp-mobile-action/actions-runner/releases/latest | grep -oP '(?<=tag/v)[^"]+')
